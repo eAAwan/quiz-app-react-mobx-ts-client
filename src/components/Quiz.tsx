@@ -17,19 +17,6 @@ interface IProps {
 }
 
 export default function Quiz(props: IProps) {
-  function renderAnswerOptions(key: IAnswerOptions) {
-    return (
-      <AnswerOption
-        key={key.content}
-        answerContent={key.content}
-        answerType={key.points.toString()}
-        answer={props.answer}
-        questionId={props.questionId}
-        onAnswerSelected={props.onAnswerSelected}
-      />
-    );
-  }
-
   return (
     <TransitionGroup
       className="container"
@@ -45,9 +32,16 @@ export default function Quiz(props: IProps) {
         <ResultCount points={props.currentpoints} />
         <Question content={props.question} />
         <ul className="answerOptions">
-          {props.answerOptions.map((item: IAnswerOptions) =>
-            renderAnswerOptions(item)
-          )}
+          {props.answerOptions.map((item: IAnswerOptions) => (
+            <AnswerOption
+              key={item.content}
+              answerContent={item.content}
+              answerType={item.points.toString()}
+              answer={props.answer}
+              questionId={props.questionId}
+              onAnswerSelected={props.onAnswerSelected}
+            />
+          ))}
         </ul>
       </div>
     </TransitionGroup>
