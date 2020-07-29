@@ -9,7 +9,7 @@ import { observer, inject } from "mobx-react";
 import AppStore from "./stores/AppStore";
 import { autobind } from "core-decorators";
 
-const API = "http://localhost:3008/";
+const API = "http://localhost:3000/";
 const DEFAULT_QUERY = "getquiz";
 
 interface IProps {
@@ -55,11 +55,11 @@ export default class App extends Component<IProps, IState> {
       .then((response) => response.json())
       .then((data) => {
         console.log("---" + JSON.stringify(data));
-        this.setState({
-          question: quizQuestions[0].question,
-          answerOptions: quizQuestions[0].answers,
-        });
       });
+    this.setState({
+      question: quizQuestions[0].question,
+      answerOptions: quizQuestions[0].answers,
+    });
   }
 
   @autobind
