@@ -1,6 +1,7 @@
 import * as React from "react";
 
 interface IProps {
+  key: string;
   answerType?: string;
   questionId: number;
   answer?: string;
