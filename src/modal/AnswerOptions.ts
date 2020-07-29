@@ -1,6 +1,4 @@
 export interface IAnswerOptions {
-  id: number;
-  text: string;
+  content: string;
   points: number;
-  checked: boolean;
 }

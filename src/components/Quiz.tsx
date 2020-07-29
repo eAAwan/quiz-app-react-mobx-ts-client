@@ -4,6 +4,7 @@ import Question from "./Question";
 import QuestionCount from "./QuestionCount";
 import AnswerOption from "./AnswerOption";
 import ResultCount from "./ResultCount";
+import { IAnswerOptions } from "modal/AnswerOptions";
 
 interface IProps {
   currentpoints: number;
@@ -16,7 +17,7 @@ interface IProps {
 }
 
 export default function Quiz(props: IProps) {
-  function renderAnswerOptions(key) {
+  function renderAnswerOptions(key: IAnswerOptions) {
     return (
       <AnswerOption
         key={key.content}
@@ -44,7 +45,9 @@ export default function Quiz(props: IProps) {
         <ResultCount points={props.currentpoints} />
         <Question content={props.question} />
         <ul className="answerOptions">
-          {props.answerOptions.map((item) => renderAnswerOptions(item))}
+          {props.answerOptions.map((item: IAnswerOptions) =>
+            renderAnswerOptions(item)
+          )}
         </ul>
       </div>
     </TransitionGroup>
